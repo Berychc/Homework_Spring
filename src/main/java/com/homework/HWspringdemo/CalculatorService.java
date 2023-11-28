@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
-public class CalculatorService implements CalculatorInterface {
+public class CalculatorService {
 
     public String hello() {
         return "<b> Главная страница! </b>";
@@ -14,24 +14,21 @@ public class CalculatorService implements CalculatorInterface {
         return "Добро пожаловать в калькулятор";
     }
 
-    public int plus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
+    public int plus(@RequestParam("num1") Integer num1, @RequestParam("num2") Integer num2) {
         return num1 + num2;
     }
 
-    public int minus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
+    public int minus(@RequestParam("num1") Integer num1, @RequestParam("num2") Integer num2) {
         return num1 - num2;
     }
 
-    public int multiply(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
+    public int multiply(@RequestParam("num1") Integer num1, @RequestParam("num2") Integer num2) {
         return num1 * num2;
     }
 
-    public int divide(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
+    public int divide(@RequestParam("num1") Integer num1, @RequestParam("num2") Integer num2) {
         if (num2 == 0) {
             throw new IllegalArgumentException("Деление на ноль не допускается");
-        }
-        if (num1 <= 0 || num2 <= 0) {
-            throw new IllegalArgumentException("Оба числа должны быть положительными для деления");
         }
         return num1 / num2;
     }
